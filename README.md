@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# 🛍️ Heart Cart — E-Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Heart Cart is a responsive e-commerce web application built with **React + Vite** and powered by **Firebase**.  
+It allows users to register, log in, browse products, and manage their own shopping cart, with real-time updates stored in **Firestore**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🔐 **Authentication**
+  - User registration with email & password
+  - Custom user profile with **name** and **phone number**
+  - Log in & log out functionality
+  - Auth state persistence across sessions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🛒 **Shopping Cart**
+  - Add products to cart (saved per user in Firestore)
+  - Increment / decrement item quantity
+  - Remove individual items
+  - Empty entire cart
+  - Real-time cart synchronization (using `onSnapshot`)
+  - Dynamic badge in navbar showing total items
 
-## Expanding the ESLint configuration
+- 📱 **Responsive UI**
+  - Custom **responsive navbar**
+  - Mobile menu (hamburger with slide-down menu)
+  - Adaptive layout for desktop, tablet, and mobile
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📦 **Products**
+  - Products displayed with image, name, price
+  - Fake store API integration (or placeholder data)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Technologies Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend**
+  - [React 18](https://react.dev/) (with **Vite**)
+  - [React Router 7](https://reactrouter.com/) for navigation
+  - [TypeScript](https://www.typescriptlang.org/) for type safety
+  - [Tailwind CSS](https://tailwindcss.com/) for styling
+  - SVG icons imported as React components
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Backend / Database**
+  - [Firebase Authentication](https://firebase.google.com/docs/auth)  
+  - [Cloud Firestore](https://firebase.google.com/docs/firestore)  
+  - Firestore Security Rules (to secure user data and cart items)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Hosting**
+  - [Netlify](https://www.netlify.com/) for deployment and environment variables
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📚 Knowledge & Skills Applied
+
+- **Authentication Flow**
+  - `createUserWithEmailAndPassword`  
+  - `updateProfile` to store `displayName`  
+  - `onAuthStateChanged` with React’s `useEffect`  
+
+- **Firestore Integration**
+  - CRUD operations with `getDoc`, `getDocs`, `setDoc`, `deleteDoc`  
+  - Real-time updates using `onSnapshot`  
+  - Collection structure:  
+    ```
+    users/{uid}/cart/{productId}
+    ```
+
+- **React Concepts**
+  - Context API (`AuthContext`, `CartContext`) for global state management
+  - Custom hooks for accessing contexts
+  - Controlled forms with `useRef`
+  - `useState`, `useEffect`, and `useMemo`
+
+- **Responsive Design**
+  - Tailwind breakpoints (`md:`, `lg:`)
+  - Mobile menu toggle state (`useState` for hamburger menu)
+  - Conditional rendering for authenticated vs non-authenticated users
+
+- **Deployment**
+  - Vite build process
+  - Netlify environment variables (`VITE_FIREBASE_...`)
+  - `_redirects` file for React Router compatibility
