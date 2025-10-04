@@ -3,6 +3,12 @@
 Heart Cart is a responsive e-commerce web application built with **React + Vite** and powered by **Firebase**.  
 It allows users to register, log in, browse products, and manage their own shopping cart, with real-time updates stored in **Firestore**.
 
+This is a demo project, if you don't want to register, you can use this test account:
+- email: test@test.com
+- password: 123456a
+
+[Live Demo](https://heartcart.netlify.app/)
+
 ---
 
 ## ✨ Features
