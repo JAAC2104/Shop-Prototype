@@ -1,7 +1,7 @@
 // src/contexts/AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase/firebase";            // tu getAuth(app)
-import { db } from "../firebase/firebase";              // 👈 Asegúrate de exportar getFirestore(app)
+import { auth } from "../firebase/firebase";
+import { db } from "../firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
